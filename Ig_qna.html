@@ -1,0 +1,735 @@
+<!DOCTYPE html><html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Ignition System MCQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  min-height: 100vh;
+  color: #fff;
+  padding: 30px 15px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header p {
+  color: #cbd5e1;
+  font-size: 18px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 180px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.card h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+  color: #38bdf8;
+}
+
+.quiz-box {
+  min-height: 75vh;
+  background: rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.question-count {
+  color: #94a3b8;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.question {
+  font-size: 38px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.options {
+  display: grid;
+  gap: 16px;
+}
+
+.option {
+  font-size: 24px;
+  min-height: 85px;
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.06);
+  border: 2px solid transparent;
+  padding: 16px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-size: 18px;
+}
+
+.option:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.12);
+  border-color: #38bdf8;
+}
+
+.option.correct {
+  background: rgba(34,197,94,0.2);
+  border-color: #22c55e;
+}
+
+.option.wrong {
+  background: rgba(239,68,68,0.2);
+  border-color: #ef4444;
+}
+
+.controls {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.next-btn {
+  background: linear-gradient(to right, #38bdf8, #6366f1);
+  color: white;
+}
+
+.next-btn:hover {
+  transform: scale(1.04);
+}
+
+.restart-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.result {
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.result h2 {
+  font-size: 40px;
+  margin-bottom: 12px;
+  color: #38bdf8;
+}
+
+.result p {
+  font-size: 22px;
+  color: #e2e8f0;
+  margin-bottom: 25px;
+}
+
+.progress {
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #38bdf8, #6366f1);
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 38px;
+  }
+
+  .question {
+    font-size: 28px;
+  }
+
+  .option {
+    font-size: 20px;
+  }
+
+  .quiz-box {
+    padding: 22px;
+  }
+}
+
+
+div.copyright{
+font-size:10px;
+color:green;
+}
+.top-bar{ display:flex; justify-content:space-between; align-items:stretch; gap:12px; margin-bottom:20px; flex-wrap:nowrap; } }
+
+.mini-card{ flex:1; max-width:50%; min-width:0; padding:16px 12px; border-radius:20px; background:rgba(255,255,255,0.08); text-align:center; background:rgba(255,255,255,0.08); padding:18px 25px; border-radius:18px; text-align:center; min-width:170px; }
+
+.mini-card span{ font-size:18px; color:#cbd5e1; }
+
+.mini-card h2{ font-size:42px; margin-top:8px; }
+
+.question-no{ width:100%; text-align:center; margin-top:10px; margin-bottom:10px; font-size:34px; font-weight:700; text-align:center; }
+
+.question-area{ margin-top:30px; margin-bottom:40px; }
+
+.question{ font-size:48px !important; font-weight:700; line-height:1.5; text-align:center; }
+
+.options{ display:grid; gap:22px; }
+
+.option{ background:rgba(255,255,255,0.08); padding:28px; border-radius:20px; font-size:28px !important; cursor:pointer; transition:0.25s; border:2px solid transparent; }
+
+.option:hover{ transform:scale(1.02); border-color:#38bdf8; }
+
+.correct{ background:rgba(34,197,94,0.25); border-color:#22c55e; }
+
+.wrong{ background:rgba(239,68,68,0.3); border-color:#ef4444; }
+
+.bottom-btn{ margin-top:35px; text-align:center; }
+
+.bottom-btn button, .popup-buttons{ position:sticky; bottom:0; background:#111827; padding-top:20px; margin-top:25px; display:flex; justify-content:center; align-items:center;color:white; }
+
+.next-popup-btn{ width:100%; max-width:320px; padding:20px 30px; font-size:26px; font-weight:700; border:none; border-radius:18px; background:linear-gradient(to right,#22c55e,#16a34a); color:white; cursor:pointer; transition:0.25s; box-shadow:0 10px 25px rgba(34,197,94,0.35); }
+
+.next-popup-btn:hover{ transform:scale(1.03); }
+
+.popup-content button{ padding:18px 38px; font-size:22px; border:none; border-radius:18px; background:linear-gradient(to right,#38bdf8,#6366f1); color:white; cursor:pointer; font-weight:700; }
+
+.popup{ position:fixed; inset:0; background:rgba(0,0,0,0.7); display:none; justify-content:center; align-items:center; padding:20px; z-index:999; }
+
+.popup-content{ max-height:90vh; overflow-y:auto; background:#111827; padding:10px; border-radius:28px; max-width:700px; width:100%; text-align:center; }
+
+.popup-content h2, .result-popup h1{ font-size:42px; margin-bottom:20px; }
+
+.popup-content p{ font-size:24px; line-height:1.7; margin-bottom:30px; }
+
+.final-stats{ display:flex; justify-content:center; gap:40px; margin:35px 0; }
+
+.final-stats div{ background:rgba(255,255,255,0.08); padding:20px 35px; border-radius:20px; }
+
+.final-stats h2{ font-size:48px; }
+
+.wrong-review{ margin-top:30px; text-align:left; }
+
+.wrong-review h3{ font-size:30px; margin-bottom:20px; }
+
+.review-box{ background:rgba(255,255,255,0.08); padding:20px; border-radius:18px; margin-bottom:18px; font-size:22px; line-height:1.7; }
+
+.practice-box{ padding-bottom:10px; text-align:left; background:rgba(255,255,255,0.06); padding:25px; border-radius:20px; margin-bottom:25px; }
+
+.practice-box h3{ font-size:28px; margin-bottom:12px; color:#38bdf8; }
+
+.practice-box p{ font-size:24px; line-height:1.8; margin-bottom:20px; }
+
+.practice-answer{ color:#22c55e; font-weight:700; }
+
+.practice-note{ background:rgba(56,189,248,0.15); padding:18px; border-radius:16px; font-size:22px; line-height:1.7; }
+
+@media(max-width:768px){ .top-bar{ flex-wrap:nowrap; }
+
+.mini-card{ max-width:48%; min-width:auto; padding:15px; }
+
+.question{ font-size:34px !important; }
+
+.option{ font-size:22px !important; padding:22px; }
+
+.question-no{ font-size:24px; }
+
+.mini-card h2{ font-size:32px; } }
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="quiz-box"><div class="top-bar">
+    <div class="mini-card">
+      <span>❌ Wrong</span>
+      <h2 id="wrongScore">0</h2>
+    </div>
+
+    <div class="question-no">
+      Question <span id="currentNo">1</span> / <span id="totalQ">50</span>
+    </div>
+
+    <div class="mini-card">
+      <span>✅ Right</span>
+      <h2 id="score">0</h2>
+    </div>
+  </div>
+
+  <div class="question-area">
+    <div class="question" id="question"></div>
+  </div>
+
+  <div class="options" id="options"></div>
+
+  <div class="bottom-btn">
+    <button id="nextBtn">Next Question</button>
+  </div>
+  
+</div>
+
+  </div>  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>📚 Practice Mode</h2>
+      <div id="practiceContent"></div>
+      <div class="popup-buttons">
+        <button class="next-popup-btn" onclick="closePopup()">➡ Next Question</button>
+      </div>
+    </div>
+  </div>  <div class="popup" id="finalPopup">
+    <div class="popup-content result-popup">
+      <h1>🎉 Quiz Finished</h1><div class="final-stats">
+    <div>
+      <h2 id="finalRight">0</h2>
+      <p>Right</p>
+    </div>
+
+    <div>
+      <h2 id="finalWrong">0</h2>
+      <p>Wrong</p>
+    </div>
+  </div>
+
+  <div class="wrong-review">
+    <h3>❌ Wrong Questions Review</h3>
+    <div id="wrongQuestions"></div>
+  </div>
+
+  <button onclick="restartQuiz()">Restart Quiz</button>
+ </div>
+
+  </div><div class="copyright">@saju ahmed</div>
+  <script>
+const questions = [
+{
+question: "ইগনিশন কয়েলের প্রাইমারি ও সেকেন্ডারি উইন্ডিংয়ের মধ্যে সংযোগ পদ্ধতি কী?",
+options: ["সমান্তরাল", "সিরিজ", "চৌম্বকীয় আবেশ", "কোনোটিই নয়"],
+answer: 2
+},
+{
+question: "ইগনিশন সিস্টেমে ক্যাম (Cam) এর কাজ কী?",
+options: ["বিদ্যুৎ সরবরাহ করা", "CB পয়েন্ট খোলা", "ব্যাটারি চার্জ করা", "তেলের গতি বাড়ানো"],
+answer: 1
+},
+{
+question: "কনডেনসারের মান সাধারণত কত?",
+options: ["0.15–0.25 µF", "10–20 F", "100–500 Ω", "1–5 V"],
+answer: 0
+},
+{
+question: "ইগনিশন কয়েলে কোন তেল ব্যবহার হয়?",
+options: ["ইঞ্জিন অয়েল", "ট্রান্সফরমার অয়েল", "ব্রেক অয়েল", "গিয়ার অয়েল"],
+answer: 1
+},
+{
+question: "স্পার্ক প্লাগের সেন্টার ইলেকট্রোড কী দিয়ে ঢাকা থাকে?",
+options: ["তামা", "প্লাস্টিক", "পোর্সেলিন ইনসুলেটর", "রাবার"],
+answer: 2
+},
+{
+question: "ডিস্ট্রিবিউটর রোটর কোন শ্যাফটে বসানো থাকে?",
+options: ["ক্র্যাঙ্কশ্যাফট", "ডিস্ট্রিবিউটর শ্যাফট", "গিয়ারবক্স", "চাকা"],
+answer: 1
+},
+{
+question: "সেকেন্ডারি সার্কিটের ভোল্টেজ কত?",
+options: ["12V", "220V", "20,000–30,000V", "50V"],
+answer: 2
+},
+{
+question: "ইগনিশন সুইচ বন্ধ করলে কী হয়?",
+options: ["ইঞ্জিন চালু থাকে", "প্রাইমারি সার্কিট বিচ্ছিন্ন হয়", "ব্যাটারি ফেটে যায়", "স্পার্ক জ্বলে"],
+answer: 1
+},
+{
+question: "আমমিটার কী দেখায়?",
+options: ["ভোল্টেজ", "কারেন্ট", "স্পার্ক", "তেল"],
+answer: 1
+},
+{
+question: "ডিস্ট্রিবিউটর ক্যাপের কাজ কী?",
+options: ["ধুলো আটকানো", "হাই টেনশন বিতরণ", "ভোল্টেজ কমানো", "ইঞ্জিন ঠান্ডা করা"],
+answer: 1
+},
+
+{
+question: "ম্যাগনেটোতে বিদ্যুৎ কীভাবে তৈরি হয়?",
+options: ["ব্যাটারি", "চুম্বক ঘোরানো", "বাতাস", "পেট্রোল"],
+answer: 1
+},
+{
+question: "CDI সিস্টেমে শক্তি কোথায় জমা থাকে?",
+options: ["কয়েল", "ব্যাটারি", "ক্যাপাসিটার", "তার"],
+answer: 2
+},
+{
+question: "পিকআপ কয়েলের কাজ কী?",
+options: ["স্পার্ক তৈরি", "টাইমিং সংকেত", "তেল পাম্প", "লাইট"],
+answer: 1
+},
+{
+question: "ইলেকট্রনিক ইগনিশন ভালো কেন?",
+options: ["সস্তা", "যান্ত্রিক ক্ষয় নেই", "ভারী", "পানি চালিত"],
+answer: 1
+},
+{
+question: "ম্যাগনেটোতে সমস্যা হয় কেন?",
+options: ["কম ভোল্টেজ", "চুম্বক ছোট", "তার কম", "ব্যাটারি নেই"],
+answer: 0
+},
+{
+question: "ECU এর পূর্ণরূপ কী?",
+options: ["Electronic Control Unit", "Engine Central Unit", "Electric Charge Unit", "Easy Control"],
+answer: 0
+},
+{
+question: "হল সেন্সর কোথায় ব্যবহৃত হয়?",
+options: ["চাকা", "ডিস্ট্রিবিউটর", "ব্রেক", "লাইট"],
+answer: 1
+},
+{
+question: "DIS সিস্টেমে কী থাকে?",
+options: ["এক কয়েল", "প্রতিটি সিলিন্ডারে কয়েল", "কার্বুরেটর", "পাম্প"],
+answer: 1
+},
+{
+question: "ট্রানজিস্টরের কাজ কী?",
+options: ["স্পিকার", "সুইচিং", "ভোল্টেজ কমানো", "ঠান্ডা করা"],
+answer: 1
+},
+{
+question: "ইলেকট্রনিক ইগনিশনের স্পার্ক কেমন?",
+options: ["দুর্বল", "সুনির্দিষ্ট ও শক্তিশালী", "অস্থির", "কম"],
+answer: 1
+},
+
+{
+question: "ফায়ারিং অর্ডার কেন দরকার?",
+options: ["গতি বাড়াতে", "ভারসাম্য রাখতে", "তেল কমাতে", "রং ঠিক রাখতে"],
+answer: 1
+},
+{
+question: "3 সিলিন্ডার ফায়ারিং অর্ডার কোনটি?",
+options: ["1-2-3", "1-3-2", "3-2-1", "2-1-3"],
+answer: 1
+},
+{
+question: "টাইমিং ভুল হলে কী হয়?",
+options: ["নকিং", "লাইট বন্ধ", "হর্ন বাজে", "চাকা থামে"],
+answer: 0
+},
+{
+question: "Advance টাইমিং মানে?",
+options: ["TDC পরে", "TDC আগে", "বন্ধ", "র্যান্ডম"],
+answer: 1
+},
+{
+question: "সেন্ট্রিফিউগাল অ্যাডভান্স কোথায় থাকে?",
+options: ["ব্যাটারি", "ডিস্ট্রিবিউটর", "টায়ার", "ইঞ্জিন"],
+answer: 1
+},
+{
+question: "ভ্যাকিউম অ্যাডভান্স যুক্ত থাকে কোথায়?",
+options: ["এক্সজস্ট", "ইনটেক", "রেডিও", "টায়ার"],
+answer: 1
+},
+{
+question: "উচ্চ গতিতে টাইমিং কী হয়?",
+options: ["রিটার্ড", "অ্যাডভান্স", "বন্ধ", "একই"],
+answer: 1
+},
+{
+question: "Ignition Lag কী?",
+options: ["স্পার্ক দেরি", "তার লম্বা", "ব্যাটারি সমস্যা", "তেল সমস্যা"],
+answer: 0
+},
+{
+question: "8 সিলিন্ডার ফায়ারিং অর্ডার উদাহরণ কোনটি?",
+options: ["1-2-3-4-5-6-7-8", "1-8-4-3-6-5-7-2", "1-2-1-2", "সব"],
+answer: 1
+},
+{
+question: "টাইমিং লাইট কী দেখে?",
+options: ["তেল", "ফ্লাইহুইল টাইমিং", "চাকা", "ব্রেক"],
+answer: 1
+},
+
+{
+question: "স্পার্ক প্লাগ গ্যাপ বেশি হলে কী হয়?",
+options: ["ভালো স্পার্ক", "মিসফায়ার", "গতি বাড়ে", "তাপ কমে"],
+answer: 1
+},
+{
+question: "প্লাগ সাদা হলে কী বোঝায়?",
+options: ["ঠান্ডা", "ওভারহিট", "ভালো", "নতুন"],
+answer: 1
+},
+{
+question: "ইলেকট্রোড ক্ষয় হয় কেন?",
+options: ["তাপ ও বিদ্যুৎ", "পানি", "ধুলো", "বাতাস"],
+answer: 0
+},
+{
+question: "স্পার্ক প্লাগ পরিষ্কার করা হয় কী দিয়ে?",
+options: ["পানি", "ব্রাশ", "তেল", "অ্যাসিড"],
+answer: 1
+},
+{
+question: "কালো প্লাগ মানে কী?",
+options: ["ফাউলিং", "ভালো", "নতুন", "শুকনো"],
+answer: 0
+},
+{
+question: "Dwell Angle বেশি হলে কী হয়?",
+options: ["CB নষ্ট", "ইঞ্জিন ভালো", "লাইট বাড়ে", "কিছু না"],
+answer: 0
+},
+{
+question: "HT ক্যাবল কী বহন করে?",
+options: ["লো ভোল্টেজ", "হাই ভোল্টেজ কম কারেন্ট", "পানি", "তেল"],
+answer: 1
+},
+{
+question: "ইগনিশন কয়েলে কয়টি উইন্ডিং থাকে?",
+options: ["1", "2", "3", "4"],
+answer: 1
+},
+{
+question: "ব্যাকফায়ার কেন হয়?",
+options: ["ভুল টাইমিং", "নতুন টায়ার", "ভালো ব্যাটারি", "মিউজিক"],
+answer: 0
+},
+{
+question: "স্পার্ক প্লাগ থ্রেড সমস্যা হলে কী হয়?",
+options: ["লিকেজ", "গতি বাড়ে", "শব্দ", "লাইট"],
+answer: 0
+},
+
+{
+question: "প্রাইমারি সার্কিট ভোল্টেজ কত?",
+options: ["12V", "220V", "20kV", "100V"],
+answer: 0
+},
+{
+question: "ইগনিশন সিস্টেমের শত্রু কোনটি?",
+options: ["আর্দ্রতা", "পেট্রোল", "লোহা", "রাবার"],
+answer: 0
+},
+{
+question: "ডিস্ট্রিবিউটর কাজ কী?",
+options: ["বিদ্যুৎ বিতরণ", "ঠান্ডা করা", "তেল দেওয়া", "ব্রেক"],
+answer: 0
+},
+{
+question: "কয়েল কাজ কিসের মতো?",
+options: ["স্টেপ-আপ ট্রান্সফরমার", "মোটর", "জেনারেটর", "ব্যাটারি"],
+answer: 0
+},
+{
+question: "স্টার্টিংয়ে কোন সিস্টেম কাজ করে?",
+options: ["ইগনিশন", "ব্রেক", "রেডিও", "এসি"],
+answer: 0
+},
+{
+question: "ফিলার গেজ কী মাপে?",
+options: ["গ্যাপ", "গতি", "তাপ", "ভোল্ট"],
+answer: 0
+},
+{
+question: "গ্রাউন্ড কোনটি?",
+options: ["গাড়ির বডি", "টায়ার", "সিট", "গ্লাস"],
+answer: 0
+},
+{
+question: "ওভারহলিংয়ের পর কী জরুরি?",
+options: ["টাইমিং চেক", "রং", "লাইট", "হর্ন"],
+answer: 0
+},
+{
+question: "আধুনিক গাড়িতে ডিস্ট্রিবিউটর কেন বাদ?",
+options: ["ক্ষয় কমাতে", "দাম বাড়াতে", "ওজন বাড়াতে", "শব্দের জন্য"],
+answer: 0
+}
+];
+
+let currentQuestion = 0;
+let score = 0;
+let wrong = 0;
+let answered = false;
+let wrongList = [];
+
+const questionEl = document.getElementById('question');
+const optionsEl = document.getElementById('options');
+const scoreEl = document.getElementById('score');
+const wrongScoreEl = document.getElementById('wrongScore');
+const currentNoEl = document.getElementById('currentNo');
+
+function loadQuestion(){
+answered = false;
+
+const q = questions[currentQuestion];
+questionEl.innerText = q.question;
+currentNoEl.innerText = currentQuestion + 1;
+
+optionsEl.innerHTML = '';
+
+q.options.forEach((option,index)=>{
+const div = document.createElement('div');
+div.classList.add('option');
+div.innerText = option;
+
+div.onclick = ()=> selectAnswer(div,index);
+
+optionsEl.appendChild(div);
+});
+}
+
+function selectAnswer(element,index){
+if(answered) return;
+answered = true;
+
+const correct = questions[currentQuestion].answer;
+const options = document.querySelectorAll('.option');
+
+options.forEach((opt,i)=>{
+if(i===correct){
+opt.classList.add('correct');
+}
+});
+
+if(index===correct){
+score++;
+scoreEl.innerText = score;
+}else{
+element.classList.add('wrong');
+wrong++;
+wrongScoreEl.innerText = wrong;
+
+wrongList.push({
+question: questions[currentQuestion].question,
+correctAns: questions[currentQuestion].options[correct]
+});
+}
+}
+
+document.getElementById('nextBtn').addEventListener('click',()=>{
+if(!answered){
+alert('আগে একটি Answer নির্বাচন করুন');
+return;
+}
+
+const current = questions[currentQuestion];
+const correctAnswer = current.options[current.answer];
+
+const practiceContent = document.getElementById('practiceContent');
+practiceContent.innerHTML = `
+<div class="practice-box">
+<h3>📖 Question</h3>
+<p>${current.question}</p>
+
+<h3>✅ Correct Answer</h3>
+<p class="practice-answer">${correctAnswer}</p>
+
+<div class="practice-note">
+এই প্রশ্নটি ভালোভাবে পড়ুন এবং Practice করুন।
+</div>
+</div>
+`;
+
+document.getElementById('popup').style.display='flex';
+});
+
+function closePopup(){
+document.getElementById('popup').style.display='none';
+currentQuestion++;
+
+if(currentQuestion < questions.length){
+loadQuestion();
+}else{
+showFinal();
+}
+}
+
+function showFinal(){
+document.getElementById('finalPopup').style.display='flex';
+
+document.getElementById('finalRight').innerText = score;
+document.getElementById('finalWrong').innerText = wrong;
+
+const wrongQuestions = document.getElementById('wrongQuestions');
+wrongQuestions.innerHTML='';
+
+wrongList.forEach((item)=>{
+const div = document.createElement('div');
+div.classList.add('review-box');
+
+div.innerHTML = `
+<b>Q:</b> ${item.question}<br><br>
+<b>✅ Correct Answer:</b> ${item.correctAns}
+`;
+
+wrongQuestions.appendChild(div);
+});
+}
+
+function restartQuiz(){
+location.reload();
+}
+
+loadQuestion();
+</script></body>
+</html>
